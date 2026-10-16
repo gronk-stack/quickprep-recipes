@@ -7,7 +7,7 @@ const SYNC = 'qp_favorites_sync'
 function readStorage(): string[] {
   try {
     const s = localStorage.getItem(KEY)
-    return s ? JSON.parse(s) : []
+    return s ? (JSON.parse(s) as string[]) : []
   } catch { return [] }
 }
 
@@ -22,14 +22,17 @@ export function useFavorites() {
   }, [])
 
   const toggleFavorite = useCallback((slug: string) => {
-    setFavorites(prev => {
-      const next = prev.includes(slug) ? prev.filter(s => s !== slug) : [...prev, slug]
-      try {
-        localStorage.setItem(KEY, JSON.stringify(next))
-        window.dispatchEvent(new Event(SYNC))
-      } catch {}
-      return next
-    })
+    // Read current state from localStorage (source of truth) to avoid stale closure
+    const current = readStorage()
+    const next = current.includes(slug)
+      ? current.filter(s => s !== slug)
+      : [...current, slug]
+
+    try { localStorage.setItem(KEY, JSON.stringify(next)) } catch {}
+
+    // Update this instance directly, then notify others
+    setFavorites(next)
+    window.dispatchEvent(new Event(SYNC))
   }, [])
 
   const isFavorite = useCallback((slug: string) => favorites.includes(slug), [favorites])

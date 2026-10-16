@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Recipe } from '@/lib/types'
 import { getRecipeImage } from '@/lib/recipes'
+import { FavoriteIconButton } from './FavoriteButton'
 
 // Gradient placeholders by category for when no image is provided
 const CATEGORY_GRADIENTS: Record<string, string> = {
@@ -22,6 +23,9 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
 
   return (
     <article className="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+      <div className="absolute top-2 right-2 z-10">
+        <FavoriteIconButton slug={recipe.slug} />
+      </div>
       <Link href={`/recipes/${recipe.slug}`} className="block">
         {/* Image with gradient fallback shown behind it */}
         <div className={`relative aspect-[4/3] w-full bg-gradient-to-br ${gradient}`}>
@@ -44,7 +48,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
             ))}
           </div>
 
-          <h3 className="font-heading font-bold text-base text-gray-900 group-hover:text-primary transition-colors leading-tight mb-3">
+          <h3 className="font-heading font-bold text-sm text-gray-900 group-hover:text-primary transition-colors leading-tight truncate mb-3">
             {recipe.title}
           </h3>
 

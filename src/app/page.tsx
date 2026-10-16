@@ -68,10 +68,9 @@ export default function HomePage() {
           </div>
           <div className="flex-1">
             <p className="font-heading font-bold uppercase tracking-widest text-xs text-primary mb-2">Meet the Chef</p>
-            <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-gray-900 mb-2">Hi, I&apos;m Caitlynd</h2>
-            <p className="font-heading font-semibold text-lg text-accent mb-4">Brain happy. Heart healthy. Nutritious meals.</p>
+            <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-gray-900 mb-4">Hi, I&apos;m Caitlynd</h2>
             <p className="font-body text-base leading-relaxed mb-4" style={{ color: '#4a4a4a' }}>
-              Our mission is to provide you with healthy, fresh, and delicious recipes made with whole and minimally processed foods. Our recipes are wholesome for all, mostly gluten-free, and customizable for special diets and food allergies.
+              My mission is to provide you with healthy, fresh, and delicious recipes made with whole and minimally processed foods. My recipes are wholesome for all, mostly gluten-free, and customizable for special diets and food allergies.
             </p>
             <p className="font-body text-base leading-relaxed mb-6" style={{ color: '#4a4a4a' }}>
               I&apos;m a Minnesota-based home cook and runner — training for local 5Ks and 10Ks means I know exactly what it&apos;s like to come home tired and still need a real meal on the table. Every recipe here is built for that reality: quick to prep, made with real ingredients, and worth making again on a Tuesday night.
