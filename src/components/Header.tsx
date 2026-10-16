@@ -22,30 +22,19 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <header className="sticky top-0 z-50 border-b border-[#d9d3c8] shadow-sm" style={{ backgroundColor: '#ece8df' }}>
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-          <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200 shadow-sm">
-            <Image
-              src="/images/QPR.jpg"
-              alt="QuickPrep Recipes logo"
-              fill
-              sizes="40px"
-              className="object-cover object-center"
-            />
-          </div>
-          <span className="font-heading font-extrabold text-lg text-nav leading-none">
-            quickprep
-            <span className="inline-flex items-center gap-0.5 text-primary">
-              {/* Fork icon */}
-              <svg className="w-3.5 h-3.5 mx-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M11 2v7c0 1.66 1.34 3 3 3h1v10h2V12h1c1.66 0 3-1.34 3-3V2h-2v5h-1V2h-2v5h-1V2h-2zM5 2C3.34 2 2 3.34 2 5v6c0 1.48 1.01 2.72 2.38 3.08L4 20.5c-.06.83.6 1.5 1.43 1.5h.14c.74 0 1.37-.54 1.43-1.28L7.38 14.08C8.76 13.72 10 12.48 10 11V5c0-1.66-1.34-3-3-3H5z"/>
-              </svg>
-              .recipes
-            </span>
-          </span>
+        <Link href="/" className="flex-shrink-0">
+          <Image
+            src="/images/quickprep.recipes.jpg"
+            alt="QuickPrep Recipes"
+            width={220}
+            height={48}
+            className="h-11 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -72,7 +61,7 @@ export default function Header() {
               </svg>
             </button>
             {catOpen && (
-              <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
+              <div className="absolute top-full left-0 mt-1 w-48 rounded-lg shadow-lg border border-[#d9d3c8] py-1 z-50" style={{ backgroundColor: '#ece8df' }}>
                 {CATEGORIES.map(cat => (
                   <Link
                     key={cat.slug}
@@ -128,7 +117,7 @@ export default function Header() {
 
       {/* Search bar */}
       {searchOpen && (
-        <div className="border-t border-gray-100 bg-gray-50 px-4 py-3">
+        <div className="border-t border-[#d9d3c8] px-4 py-3" style={{ backgroundColor: '#ece8df' }}>
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto flex gap-2">
             <input
               autoFocus
@@ -150,7 +139,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <nav className="lg:hidden border-t border-gray-100 bg-white px-4 py-3 flex flex-col gap-1">
+        <nav className="lg:hidden border-t border-[#d9d3c8] px-4 py-3 flex flex-col gap-1" style={{ backgroundColor: '#ece8df' }}>
           <Link href="/" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-sm font-heading font-semibold uppercase tracking-wide text-nav hover:text-primary hover:bg-primary-light rounded transition-colors">
             Home
           </Link>
