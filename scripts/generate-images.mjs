@@ -59,20 +59,17 @@ async function generateImage(slug, prompt) {
 
   console.log(`🎨  Generating: ${slug}`)
   try {
-    const response = await ai.models.generateImages({
-      model: 'imagen-3.0-generate-002',
-      prompt: `${prompt}, ${PHOTO_STYLE}`,
-      config: {
-        numberOfImages: 1,
-        outputMimeType: 'image/jpeg',
-        aspectRatio: '4:3',
-      },
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.1-flash-image',
+      contents: [{ parts: [{ text: `${prompt}, ${PHOTO_STYLE}` }] }],
+      config: { responseModalities: ['IMAGE'] },
     })
 
-    const imageBytes = Buffer.from(
-      response.generatedImages[0].image.imageBytes,
-      'base64'
-    )
+    const parts = response.candidates?.[0]?.content?.parts ?? []
+    const imagePart = parts.find(p => p.inlineData)
+    if (!imagePart) throw new Error('No image in response')
+
+    const imageBytes = Buffer.from(imagePart.inlineData.data, 'base64')
     writeFileSync(outPath, imageBytes)
     console.log(`✅  Saved: public/images/recipes/${slug}.jpg`)
   } catch (err) {
