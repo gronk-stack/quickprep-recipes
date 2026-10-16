@@ -22,17 +22,17 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#d9d3c8] shadow-sm" style={{ backgroundColor: '#ece8df' }}>
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 border-b border-gray-200 shadow-sm" style={{ backgroundColor: '#ffffff' }}>
+      <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between gap-6">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/images/quickprep.recipes.jpg"
+            src="/images/3fa8cf09-4ded-4699-96f7-09382ae0b640.jpg"
             alt="QuickPrep Recipes"
-            width={220}
-            height={48}
-            className="h-11 w-auto"
+            width={300}
+            height={64}
+            className="h-16 w-auto"
             priority
           />
         </Link>
@@ -61,7 +61,7 @@ export default function Header() {
               </svg>
             </button>
             {catOpen && (
-              <div className="absolute top-full left-0 mt-1 w-48 rounded-lg shadow-lg border border-[#d9d3c8] py-1 z-50" style={{ backgroundColor: '#ece8df' }}>
+              <div className="absolute top-full left-0 mt-1 w-48 rounded-lg shadow-lg border border-gray-200 py-1 z-50" style={{ backgroundColor: '#ffffff' }}>
                 {CATEGORIES.map(cat => (
                   <Link
                     key={cat.slug}
@@ -117,7 +117,7 @@ export default function Header() {
 
       {/* Search bar */}
       {searchOpen && (
-        <div className="border-t border-[#d9d3c8] px-4 py-3" style={{ backgroundColor: '#ece8df' }}>
+        <div className="border-t border-gray-200 px-4 py-3" style={{ backgroundColor: '#ffffff' }}>
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto flex gap-2">
             <input
               autoFocus
@@ -139,7 +139,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <nav className="lg:hidden border-t border-[#d9d3c8] px-4 py-3 flex flex-col gap-1" style={{ backgroundColor: '#ece8df' }}>
+        <nav className="lg:hidden border-t border-gray-200 px-4 py-3 flex flex-col gap-1" style={{ backgroundColor: '#ffffff' }}>
           <Link href="/" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-sm font-heading font-semibold uppercase tracking-wide text-nav hover:text-primary hover:bg-primary-light rounded transition-colors">
             Home
           </Link>
