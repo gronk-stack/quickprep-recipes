@@ -84,13 +84,13 @@ export default function HomePage() {
       <section className="max-w-5xl mx-auto px-4 py-14">
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="flex-shrink-0">
-            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden shadow-xl border-4 border-primary-light">
+            <div className="relative w-48 h-64 md:w-56 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-primary-light">
               <Image
                 src="/images/caitlynd.jpg"
                 alt="Caitlynd, founder of QuickPrep Recipes"
                 fill
                 sizes="288px"
-                className="object-cover object-top"
+                className="object-cover object-[center_12%]"
               />
             </div>
           </div>

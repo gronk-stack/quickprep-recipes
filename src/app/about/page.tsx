@@ -14,14 +14,14 @@ export default function AboutPage() {
       {/* Hero */}
       <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
         <div className="flex-shrink-0">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative w-52 h-72 md:w-60 md:h-[420px] rounded-2xl overflow-hidden shadow-xl">
             <Image
               src="/images/caitlynd.jpg"
-              alt="Caitlynd in her kitchen"
+              alt="Caitlynd whisking in her kitchen"
               fill
               priority
-              sizes="320px"
-              className="object-cover object-top"
+              sizes="280px"
+              className="object-cover object-[center_12%]"
             />
           </div>
         </div>

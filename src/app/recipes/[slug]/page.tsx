@@ -119,7 +119,7 @@ export default async function RecipePage({ params }: Props) {
           <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-gray-900 mb-4 leading-tight">
             {recipe.title}
           </h1>
-          <p className="text-lg text-gray-600 font-body leading-relaxed mb-6">{recipe.description}</p>
+          <p className="text-lg font-body leading-relaxed mb-6" style={{ color: '#4a4a4a' }}>{recipe.description}</p>
 
           {/* Quick stats */}
           <div className="flex flex-wrap gap-6 py-4 border-y border-border text-sm font-body">
