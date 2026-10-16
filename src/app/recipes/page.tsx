@@ -30,9 +30,9 @@ export default function RecipesPage() {
           <Link
             key={cat.slug}
             href={`/category/${cat.slug}`}
-            className="px-4 py-2 rounded-full border-2 border-border text-sm font-heading font-semibold uppercase tracking-wide text-gray-600 hover:border-primary hover:text-primary transition-colors"
+            className="px-4 py-2 rounded-sm border-2 border-gray-800 text-gray-800 text-sm font-heading font-semibold uppercase tracking-wide hover:border-primary hover:text-primary transition-colors"
           >
-            {cat.icon} {cat.name}
+            {cat.name}
           </Link>
         ))}
       </div>

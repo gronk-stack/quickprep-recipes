@@ -21,7 +21,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   const imageSrc = getRecipeImage(recipe)
 
   return (
-    <article className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+    <article className="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
       <Link href={`/recipes/${recipe.slug}`} className="block">
         {/* Image with gradient fallback shown behind it */}
         <div className={`relative aspect-[4/3] w-full bg-gradient-to-br ${gradient}`}>
@@ -38,35 +38,32 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
           {/* Category pills */}
           <div className="flex flex-wrap gap-1 mb-2">
             {recipe.categories.slice(0, 2).map(cat => (
-              <span key={cat} className="text-xs font-heading font-semibold uppercase tracking-wide text-primary bg-primary-light px-2 py-0.5 rounded">
+              <span key={cat} className="text-xs font-heading font-semibold uppercase tracking-wide px-2.5 py-0.5 rounded-sm border border-gray-300 text-gray-600 bg-white">
                 {cat}
               </span>
             ))}
           </div>
 
-          <h3 className="font-heading font-bold text-lg text-gray-900 group-hover:text-primary transition-colors leading-tight mb-2">
+          <h3 className="font-heading font-bold text-base text-gray-900 group-hover:text-primary transition-colors leading-tight mb-3">
             {recipe.title}
           </h3>
 
-          <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed mb-3">
-            {recipe.description}
-          </p>
-
-          {/* Time */}
-          {totalTime > 0 && (
-            <div className="flex items-center gap-1 text-xs text-gray-500 font-body">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
-              </svg>
-              <span>{totalTime} min</span>
-              {recipe.servings && (
-                <>
-                  <span className="mx-1 text-gray-300">·</span>
-                  <span>{recipe.servings}</span>
-                </>
-              )}
-            </div>
-          )}
+          <div className="flex items-center gap-2 text-xs text-gray-500 font-body">
+            {totalTime > 0 && (
+              <>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
+                </svg>
+                <span>{totalTime} min</span>
+              </>
+            )}
+            {recipe.servings && (
+              <>
+                <span className="text-gray-300">·</span>
+                <span>{recipe.servings}</span>
+              </>
+            )}
+          </div>
         </div>
       </Link>
     </article>

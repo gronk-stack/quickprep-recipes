@@ -22,7 +22,7 @@ export default function Footer() {
             {CATEGORIES.map(cat => (
               <li key={cat.slug}>
                 <Link href={`/category/${cat.slug}`} className="text-sm hover:text-primary transition-colors">
-                  {cat.icon} {cat.name}
+                  {cat.name}
                 </Link>
               </li>
             ))}

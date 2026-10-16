@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getRecipeBySlug, getAllPublishedRecipes, toIsoDuration, getRecipeImage } from '@/lib/recipes'
+import FavoriteButton from '@/components/FavoriteButton'
 
 const SITE_URL = 'https://quickprep.recipes'
 
@@ -110,15 +111,20 @@ export default async function RecipePage({ params }: Props) {
               <Link
                 key={cat}
                 href={`/category/${cat.toLowerCase().replace(/ /g, '-')}`}
-                className="text-xs font-heading font-bold uppercase tracking-widest text-primary bg-primary-light px-3 py-1 rounded-full hover:bg-primary hover:text-white transition-colors"
+                className="text-xs font-heading font-bold uppercase tracking-widest px-3 py-1 rounded-sm border-2 border-gray-800 text-gray-800 bg-white hover:border-primary hover:text-primary transition-colors"
               >
                 {cat}
               </Link>
             ))}
           </div>
-          <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-gray-900 mb-4 leading-tight">
-            {recipe.title}
-          </h1>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-gray-900 leading-tight">
+              {recipe.title}
+            </h1>
+            <div className="flex-shrink-0 mt-1">
+              <FavoriteButton slug={recipe.slug} size="md" />
+            </div>
+          </div>
           <p className="text-lg font-body leading-relaxed mb-6" style={{ color: '#4a4a4a' }}>{recipe.description}</p>
 
           {/* Quick stats */}

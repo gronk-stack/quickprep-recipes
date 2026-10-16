@@ -23,25 +23,22 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 shadow-sm" style={{ backgroundColor: '#ffffff' }}>
-      <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between gap-6">
+      <div className="max-w-6xl mx-auto px-4 h-48 flex items-center gap-0">
 
-        {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
+        {/* Logo — replaces Home link, nudged up to optically align with nav text */}
+        <Link href="/" className="flex-shrink-0" style={{ marginTop: '-10px' }}>
           <Image
             src="/images/3fa8cf09-4ded-4699-96f7-09382ae0b640.jpg"
             alt="QuickPrep Recipes"
-            width={300}
-            height={64}
-            className="h-16 w-auto"
+            width={880}
+            height={191}
+            className="h-[191px] w-auto"
             priority
           />
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav — Home removed, logo is the home link */}
         <nav className="hidden lg:flex items-center gap-1 text-sm font-heading font-semibold uppercase tracking-wider" aria-label="Main navigation">
-          <Link href="/" className="px-3 py-2 text-nav hover:text-primary transition-colors rounded">
-            Home
-          </Link>
           <Link href="/recipes" className="px-3 py-2 text-nav hover:text-primary transition-colors rounded">
             Explore Recipes
           </Link>
@@ -61,15 +58,14 @@ export default function Header() {
               </svg>
             </button>
             {catOpen && (
-              <div className="absolute top-full left-0 mt-1 w-48 rounded-lg shadow-lg border border-gray-200 py-1 z-50" style={{ backgroundColor: '#ffffff' }}>
+              <div className="absolute top-full left-0 mt-1 w-52 rounded-lg shadow-lg border border-gray-200 py-1 z-50" style={{ backgroundColor: '#ffffff' }}>
                 {CATEGORIES.map(cat => (
                   <Link
                     key={cat.slug}
                     href={`/category/${cat.slug}`}
-                    className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-primary-light hover:text-primary transition-colors"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-light hover:text-primary transition-colors"
                   >
-                    <span>{cat.icon}</span>
-                    <span>{cat.name}</span>
+                    {cat.name}
                   </Link>
                 ))}
               </div>
@@ -85,7 +81,7 @@ export default function Header() {
         </nav>
 
         {/* Right: search + mobile hamburger */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 ml-auto">
           <button
             onClick={() => setSearchOpen(s => !s)}
             aria-label="Toggle search"
@@ -140,9 +136,6 @@ export default function Header() {
       {/* Mobile menu */}
       {mobileOpen && (
         <nav className="lg:hidden border-t border-gray-200 px-4 py-3 flex flex-col gap-1" style={{ backgroundColor: '#ffffff' }}>
-          <Link href="/" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-sm font-heading font-semibold uppercase tracking-wide text-nav hover:text-primary hover:bg-primary-light rounded transition-colors">
-            Home
-          </Link>
           <Link href="/recipes" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-sm font-heading font-semibold uppercase tracking-wide text-nav hover:text-primary hover:bg-primary-light rounded transition-colors">
             Explore Recipes
           </Link>
@@ -151,8 +144,8 @@ export default function Header() {
           </Link>
           <div className="px-3 py-2 text-xs font-heading font-bold uppercase tracking-widest text-gray-400 mt-2">Categories</div>
           {CATEGORIES.map(cat => (
-            <Link key={cat.slug} href={`/category/${cat.slug}`} onClick={() => setMobileOpen(false)} className="px-4 py-2 text-sm text-gray-600 hover:text-primary hover:bg-primary-light rounded transition-colors flex items-center gap-2">
-              <span>{cat.icon}</span>{cat.name}
+            <Link key={cat.slug} href={`/category/${cat.slug}`} onClick={() => setMobileOpen(false)} className="px-4 py-2 text-sm text-gray-600 hover:text-primary hover:bg-primary-light rounded transition-colors">
+              {cat.name}
             </Link>
           ))}
           <Link href="/about" onClick={() => setMobileOpen(false)} className="px-3 py-2.5 text-sm font-heading font-semibold uppercase tracking-wide text-nav hover:text-primary hover:bg-primary-light rounded transition-colors mt-1 flex items-center gap-2">

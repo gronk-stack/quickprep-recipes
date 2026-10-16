@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import RecipeCard from '@/components/RecipeCard'
+import SortedRecipeGrid from '@/components/SortedRecipeGrid'
 import { getCategoryBySlug, getRecipesByCategory, CATEGORIES } from '@/lib/recipes'
 
 const SITE_URL = 'https://quickprep.recipes'
@@ -46,7 +46,6 @@ export default async function CategoryPage({ params }: Props) {
       </nav>
 
       <header className="mb-10">
-        <p className="text-4xl mb-3" aria-hidden="true">{category.icon}</p>
         <h1 className="font-heading font-extrabold text-4xl text-gray-900 mb-2">{category.name} Recipes</h1>
         <p className="text-gray-500 font-body text-lg">{category.description}</p>
         {recipes.length > 0 && (
@@ -60,26 +59,21 @@ export default async function CategoryPage({ params }: Props) {
           <Link
             key={cat.slug}
             href={`/category/${cat.slug}`}
-            className={`px-4 py-2 rounded-full border-2 text-sm font-heading font-semibold uppercase tracking-wide transition-colors ${
+            className={`px-4 py-2 rounded-sm border-2 text-sm font-heading font-semibold uppercase tracking-wide transition-colors ${
               cat.slug === slug
                 ? 'border-primary bg-primary text-white'
-                : 'border-border text-gray-600 hover:border-primary hover:text-primary'
+                : 'border-gray-800 text-gray-800 hover:border-primary hover:text-primary'
             }`}
           >
-            {cat.icon} {cat.name}
+            {cat.name}
           </Link>
         ))}
       </div>
 
       {recipes.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {recipes.map(recipe => (
-            <RecipeCard key={recipe.slug} recipe={recipe} />
-          ))}
-        </div>
+        <SortedRecipeGrid recipes={recipes} />
       ) : (
         <div className="text-center py-20 text-gray-400">
-          <p className="text-5xl mb-4" aria-hidden="true">{category.icon}</p>
           <p className="font-heading font-semibold text-xl mb-2">No recipes yet</p>
           <p className="font-body mb-6">Check back soon — more {category.name.toLowerCase()} recipes are on the way.</p>
           <Link href="/recipes" className="text-primary font-heading font-semibold hover:underline">
