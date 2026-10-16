@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /c/Users/mattw/Desktop/claude/Quickprep.recipes && npx create-next-app@latest . --ts --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --name quickprep-recipes 2>&122)",
+      "WebFetch(domain:mealprepmanual.com)",
+      "WebFetch(domain:therealfooddietitians.com)",
+      "Bash(cd /c/Users/mattw/Desktop/claude/Quickprep.recipes && npm run build 2>&1)",
+      "Bash(gh api user --jq '{name: .name, email: .email, login: .login}' 2>&1)"
+    ]
+  }
+}
