@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Recipe } from '@/lib/types'
+import { getRecipeImage } from '@/lib/recipes'
 
 // Gradient placeholders by category for when no image is provided
 const CATEGORY_GRADIENTS: Record<string, string> = {
@@ -17,34 +18,20 @@ const CATEGORY_GRADIENTS: Record<string, string> = {
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   const totalTime = recipe.prepTime + recipe.cookTime
   const gradient = CATEGORY_GRADIENTS[recipe.categories[0]] ?? 'from-gray-100 to-gray-200'
+  const imageSrc = getRecipeImage(recipe)
 
   return (
     <article className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
       <Link href={`/recipes/${recipe.slug}`} className="block">
-        {/* Image / placeholder */}
+        {/* Image with gradient fallback shown behind it */}
         <div className={`relative aspect-[4/3] w-full bg-gradient-to-br ${gradient}`}>
-          {recipe.image ? (
-            <Image
-              src={recipe.image}
-              alt={recipe.title}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-5xl opacity-40" aria-hidden="true">
-                {recipe.categories[0] === 'Breakfast' ? '🌅'
-                  : recipe.categories[0] === 'Lunch' ? '🥗'
-                  : recipe.categories[0] === 'Dinner' ? '🍽️'
-                  : recipe.categories[0] === 'Desserts' ? '🍰'
-                  : recipe.categories[0] === 'Snacks' ? '🥜'
-                  : recipe.categories[0] === 'Sides' ? '🥦'
-                  : recipe.categories[0] === 'Drinks' ? '🥤'
-                  : '📦'}
-              </span>
-            </div>
-          )}
+          <Image
+            src={imageSrc}
+            alt={recipe.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         </div>
 
         <div className="p-4">

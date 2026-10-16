@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getRecipeBySlug, getAllPublishedRecipes, toIsoDuration } from '@/lib/recipes'
+import { getRecipeBySlug, getAllPublishedRecipes, toIsoDuration, getRecipeImage } from '@/lib/recipes'
 
 const SITE_URL = 'https://quickprep.recipes'
 
@@ -52,7 +52,7 @@ export default async function RecipePage({ params }: Props) {
     '@type': 'Recipe',
     name: recipe.title,
     description: recipe.description,
-    image: recipe.image ? [`${SITE_URL}${recipe.image}`] : [],
+    image: [`${SITE_URL}${getRecipeImage(recipe)}`],
     author: { '@type': 'Person', name: 'Caitlynd', url: `${SITE_URL}/about` },
     datePublished: recipe.datePublished,
     prepTime: toIsoDuration(recipe.prepTime),
@@ -150,20 +150,14 @@ export default async function RecipePage({ params }: Props) {
 
         {/* Hero image or gradient */}
         <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-10 bg-gradient-to-br from-primary-light to-surface">
-          {recipe.image ? (
-            <Image
-              src={recipe.image}
-              alt={recipe.title}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 896px"
-              className="object-cover"
-            />
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-8xl opacity-20" aria-hidden="true">🍽️</span>
-            </div>
-          )}
+          <Image
+            src={getRecipeImage(recipe)}
+            alt={recipe.title}
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 896px"
+            className="object-cover"
+          />
         </div>
 
         {/* Tags */}

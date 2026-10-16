@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #2c6e49;
-  --color-primary-dark: #1e4d33;
-  --color-primary-light: #d4edda;
+  --color-primary: #1a6fa4;
+  --color-primary-dark: #125480;
+  --color-primary-light: #dbeeff;
   --color-accent: #f4a940;
   --color-accent-dark: #d4881f;
-  --color-nav: #1a2e1f;
+  --color-nav: #0d2b45;
   --color-surface: #f8f6f1;
   --color-border: #e2e0db;
   --font-heading: var(--font-jost), "Jost", sans-serif;

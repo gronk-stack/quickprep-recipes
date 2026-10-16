@@ -42,6 +42,12 @@ export default function Header() {
             </Link>
           ))}
           <Link
+            href="/about"
+            className="px-3 py-2 text-sm font-heading font-semibold uppercase tracking-wide text-gray-700 hover:text-primary hover:bg-primary-light rounded transition-colors"
+          >
+            About
+          </Link>
+          <Link
             href="/recipes"
             className="ml-2 px-4 py-2 text-sm font-heading font-semibold uppercase tracking-wide bg-primary text-white rounded hover:bg-primary-dark transition-colors"
           >
@@ -94,6 +100,12 @@ export default function Header() {
               {cat.icon} {cat.name}
             </Link>
           ))}
+          <Link
+            href="/about"
+            className="px-3 py-1.5 text-xs font-heading font-semibold uppercase tracking-wide text-gray-700 hover:text-primary whitespace-nowrap rounded hover:bg-primary-light transition-colors"
+          >
+            👩‍🍳 About
+          </Link>
         </div>
       </nav>
     </header>

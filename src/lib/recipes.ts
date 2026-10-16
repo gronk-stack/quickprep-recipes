@@ -875,6 +875,11 @@ export function getAllPublishedRecipes(): Recipe[] {
   return RECIPES.filter(r => r.published)
 }
 
+/** Returns explicit image path if set, otherwise the auto-generated path from the slug */
+export function getRecipeImage(recipe: Recipe): string {
+  return recipe.image || `/images/recipes/${recipe.slug}.jpg`
+}
+
 export function getCategoryBySlug(slug: string): Category | undefined {
   return CATEGORIES.find(c => c.slug === slug)
 }
